@@ -34,6 +34,7 @@ def morse_to_text(morse):
     return ''.join(text)
 
 if __name__ == "__main__":
+    if len(sys.argv) < 2 :sys.exit(1);
     input_text = " ".join(sys.argv[1:])
     print("Text to Morse Code:", text_to_morse(input_text))
     print("Morse Code to Text:", morse_to_text(input_text))
