@@ -22,9 +22,7 @@ def text_to_morse(text):
 def morse_to_text(morse):
     morse = morse.split(' ')
     reversed_dict = {value: key for key, value in MORSE_CODE_DICT.items()}
-    
     text = []
-
     for code in morse:
         if code in reversed_dict:
             text.append(reversed_dict[code])
@@ -34,7 +32,9 @@ def morse_to_text(morse):
     return ''.join(text)
 
 if __name__ == "__main__":
-    if len(sys.argv) < 2 :sys.exit(1);
+    if len(sys.argv) < 2:
+        print("enter morse or text")
+        sys.exit(1)
     input_text = " ".join(sys.argv[1:])
     print("Text to Morse Code:", text_to_morse(input_text))
     print("Morse Code to Text:", morse_to_text(input_text))

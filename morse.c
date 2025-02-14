@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
-
 #define MAX_LEN 1000
 
 char* morse_code_dict[] = {
@@ -10,13 +9,11 @@ char* morse_code_dict[] = {
     ".----", "..---", "...--", "....-", ".....", "-....", "--...", "---..", "----.", "-----", 
     "--..--", ".-.-.-", "..--..", "-..-.", "-....-", "-.--.", "-.--.-", "/"
 };
-
 char chars[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,.?/-() ";
 
 void text_to_morse(char* text) {
     for (int i = 0; text[i] != '\0'; i++) {
         char ch = toupper(text[i]);
-        
         if (ch >= 'A' && ch <= 'Z') {
             printf("%s ", morse_code_dict[ch - 'A']);
         } else if (ch >= '0' && ch <= '9') {
@@ -37,7 +34,6 @@ void morse_to_text(char* morse) {
     char* token = strtok(morse, " ");
     while (token != NULL) {
         int found = 0;
-        
         for (int i = 0; i < sizeof(morse_code_dict) / sizeof(morse_code_dict[0]); i++) {
             if (strcmp(token, morse_code_dict[i]) == 0) {
                 printf("%c", chars[i]);
@@ -45,7 +41,6 @@ void morse_to_text(char* morse) {
                 break;
             }
         }
-        
         if (!found) {
             printf("?");
         }
@@ -60,9 +55,7 @@ int main(int argc, char* argv[]) {
         printf("%s <Enter morse or text>\n", argv[0]);
         return 1;
     }
-    
     char input_text[MAX_LEN];
-    
     input_text[0] = '\0';
     for (int i = 1; i < argc; i++) {
         strcat(input_text, argv[i]);
@@ -70,10 +63,8 @@ int main(int argc, char* argv[]) {
             strcat(input_text, " ");
         }
     }
-    
     printf("Text to Morse Code: ");
     text_to_morse(input_text);
-    
     printf("Morse Code to Text: ");
     morse_to_text(input_text);
 
